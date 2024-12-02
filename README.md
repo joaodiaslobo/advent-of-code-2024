@@ -10,3 +10,4 @@ $ cargo run
 |        | Part 1 | Part 2 |
 |:-------|:-------|:-------|
 | [Day 1](src/days/day1.rs)  | 🌟     | 🌟     |
+| [Day 2](src/days/day2.rs)  | 🌟     | 🌟     |
