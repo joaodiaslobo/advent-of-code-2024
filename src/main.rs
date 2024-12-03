@@ -30,6 +30,10 @@ fn main() {
             days::day2::fist_answer();
             days::day2::second_answer();
         }
+        3 => {
+            days::day3::first_answer();
+            days::day3::second_answer();
+        }
         _ => println!("No solution for this day.")
     }
 }
