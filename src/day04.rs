@@ -1,47 +1,40 @@
 // Day 4: Ceres Search
 
-use crate::utils;
+use aoc_runner_derive::{aoc, aoc_generator};
 
-pub fn first_answer() {
-    let mut xmas_count = 0;
-
-    if let Ok(lines) = utils::read_lines("input/4.txt") {
-        let char_grid: Vec<Vec<char>> = lines
-            .filter_map(Result::ok)
-            .map(|line| line.chars().collect())
-            .collect();
-
-        for (y, row) in char_grid.iter().enumerate() {
-            for (x, &ch) in row.iter().enumerate() {
-                if ch == 'X' {
-                    xmas_count += check_all_directions(&char_grid, x as i32, y as i32);
-                }
-            }
-        }
-    }
-
-    println!("First challenge solution: {}.", xmas_count);
+#[aoc_generator(day4)]
+pub fn input_generator(input: &str) -> Vec<Vec<char>> {
+    input.lines().map(|l| l.to_string()).map(|line| line.chars().collect()).collect()
 }
 
-pub fn second_answer() {
-    let mut x_mas_count = 0;
+#[aoc(day4, part1)]
+pub fn part1(grid : &Vec<Vec<char>>) -> i32 {
+    let mut xmas_count = 0;
 
-    if let Ok(lines) = utils::read_lines("input/4.txt") {
-        let char_grid: Vec<Vec<char>> = lines
-            .filter_map(Result::ok)
-            .map(|line| line.chars().collect())
-            .collect();
-
-        for (y, row) in char_grid.iter().enumerate() {
-            for (x, &ch) in row.iter().enumerate() {
-                if ch == 'A' &&  is_mas_cross(&char_grid, x as i32, y as i32)  {
-                    x_mas_count += 1;
-                }
+    for (y, row) in grid.iter().enumerate() {
+        for (x, &ch) in row.iter().enumerate() {
+            if ch == 'X' {
+                xmas_count += check_all_directions(&grid, x as i32, y as i32);
             }
         }
     }
 
-    println!("Second challenge solution: {}.", x_mas_count);
+    xmas_count
+}
+
+#[aoc(day4, part2)]
+pub fn part2(grid : &Vec<Vec<char>>) -> i32 {
+    let mut x_mas_count = 0;
+
+    for (y, row) in grid.iter().enumerate() {
+        for (x, &ch) in row.iter().enumerate() {
+            if ch == 'A' &&  is_mas_cross(&grid, x as i32, y as i32)  {
+                x_mas_count += 1;
+            }
+        }
+    }
+
+    x_mas_count
 }
 
 fn check_all_directions(grid: &Vec<Vec<char>>, x: i32, y: i32) -> i32 {
