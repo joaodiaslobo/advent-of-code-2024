@@ -12,6 +12,7 @@ For this year, I chose to solve the challenges using the [Rust](https://www.rust
 | [Day 4](src/day04.rs)  | 🌟     | 🌟     |
 | [Day 5](src/day05.rs)  | 🌟     | 🌟     |
 | [Day 6](src/day06.rs)  | 🌟     | 🌟     |
+| [Day 7](src/day07.rs)  | 🌟     | 🌟     |
 
 ### ⚙️ Running
 
